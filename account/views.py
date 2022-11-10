@@ -7,8 +7,6 @@ from django.contrib.auth.decorators import login_required
 from .models import *
 from order.models import *
 
-import random
-
 # Create your views here.
 def signIn(request):
     if request.user.is_authenticated:
@@ -41,21 +39,7 @@ def signIn(request):
                             newUser = User.objects.create_user(first_name = fname, last_name = lname, email = email, password = password, username = username)
                             newUser.save()
 
-                            #creating a user id for UsersProfile table
-                            id_user = ""
-                            if len(fname) > 4:
-                                i = 0
-                                while i<3:
-                                    id_user += fname[i]
-                                    i += 1
-                            else:
-                                id_user = fname
-
-                            id_user += lname + str(random.randint(10000, 90000))
-                            id_user = id_user.lower()
-                            print(id_user)
-
-                            newUserProfile = UserProfile(profile_id = id_user, email = username)
+                            newUserProfile = UserProfile(email = username)
                             newUserProfile.first_name = fname
                             newUserProfile.last_name = lname
                             newUserProfile.save()

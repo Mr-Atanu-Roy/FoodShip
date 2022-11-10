@@ -23,51 +23,59 @@ def placeOrder(request, productID):
     quantity = request.GET.get('q', None)
 
     if quantity is not None:
-        product = Product.objects.get(product_id = productID)
 
-        price = (product.price)*int(quantity)
+        try:
+            product = Product.objects.get(product_id = productID)
+            price = (product.price)*int(quantity)
 
-        total_price = price + (price*5)/100
+            total_price = price + (price*5)/100
 
-        total_price = float(total_price) + delivery_charge
+            total_price = float(total_price) + delivery_charge
 
-        userProfile = UserProfile.objects.get(email = request.user.email)
+            userProfile = UserProfile.objects.get(email = request.user.email)
+            
+            try:
+                
+                address = UserAddress.objects.get(email = request.user.email, address_preference = "primary")
+                #making request to instamojo
+                response = api.payment_request_create(
+                    amount = total_price,
+                    purpose = product.product_name,
+                    buyer_name = f"{userProfile.first_name} {userProfile.last_name}",
+                    email = address.address_email,
+                    send_email = True,
+                    phone = address.phone,
+                    send_sms = True,
+                    allow_repeated_payments = False,
+                    redirect_url = 'http://127.0.0.1:8000/order/order-success',
+                )
 
-        address = UserAddress.objects.get(email = request.user.email, address_preference = "primary")
+                online_payment_url = response['payment_request']['longurl']
 
-        #making request to instamojo
-        response = api.payment_request_create(
-            amount = total_price,
-            purpose = product.product_name,
-            buyer_name = f"{userProfile.first_name} {userProfile.last_name}",
-            email = address.address_email,
-            send_email = True,
-            phone = address.phone,
-            send_sms = True,
-            allow_repeated_payments = False,
-            redirect_url = 'http://127.0.0.1:8000/order/order-success',
-        )
+                payment_id = ""
+                payment_id = payment_id.join(random.choice('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz') for i in range(16))
+                payment_id = "MOJO" + payment_id
+                offline_payment_url = f"http://127.0.0.1:8000/order/order-success?payment_id={payment_id}&payment_status=PayOnDelivery&payment_request_id={response['payment_request']['id']}"
 
-        online_payment_url = response['payment_request']['longurl']
+                newOrder, _ = Order.objects.get_or_create(order_id = response['payment_request']['id'], user = request.user.email, address_email = address.address_email, amount = f"{total_price} INR", product = product, phone = address.phone, address = address, quantity = quantity)
+                newOrder.save()
 
-        payment_id = ""
-        payment_id = payment_id.join(random.choice('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz') for i in range(16))
-        payment_id = "MOJO" + payment_id
-        offline_payment_url = f"http://127.0.0.1:8000/order/order-success?payment_id={payment_id}&payment_status=PayOnDelivery&payment_request_id={response['payment_request']['id']}"
+                context = {
+                    'quantity' : quantity,
+                    'product' : product,
+                    'address' : address,
+                    'product_price' : price,
+                    'delivery_charge' : delivery_charge,
+                    'total_price' : round(total_price, 2),
+                    'online_payment_url' : online_payment_url,
+                    'offline_payment_url' : offline_payment_url,
+                }
+            except:
+                return HttpResponse("you dont have any active address. Due to this delivery is not possible")
 
-        newOrder, _ = Order.objects.get_or_create(order_id = response['payment_request']['id'], user = request.user.email, address_email = address.address_email, amount = f"{total_price} INR", product = product, phone = address.phone, address = address, quantity = quantity)
-        newOrder.save()
+        except:
+            return HttpResponse("invalid product id")
 
-        context = {
-            'quantity' : quantity,
-            'product' : product,
-            'address' : address,
-            'product_price' : price,
-            'delivery_charge' : delivery_charge,
-            'total_price' : round(total_price, 2),
-            'online_payment_url' : online_payment_url,
-            'offline_payment_url' : offline_payment_url,
-        }
 
     else:
         context = {}
@@ -98,7 +106,6 @@ def orderSuccess(request):
                 payment_mode = response['payment_request']['payment']['billing_instrument']
 
                 getOrder.payment_id = payment_id
-                getOrder.product = purpose
                 getOrder.phone = phone
                 getOrder.buyer_name = buyer_name
                 getOrder.amount = f"{amount} {currency}"
@@ -107,20 +114,24 @@ def orderSuccess(request):
                 getOrder.save()
                 
             else:
-                userProfile = UserProfile.objects.get(email = request.user.email)
+                try:
+                    userProfile = UserProfile.objects.get(email = request.user.email)
 
-                buyer_name = f"{userProfile.first_name} {userProfile.last_name}"
-                payment_status = "success"
-                payment_mode = "cash"
+                    buyer_name = f"{userProfile.first_name} {userProfile.last_name}"
+                    payment_status = "success"
+                    payment_mode = "cash"
 
-                getOrder.payment_id = payment_id
-                getOrder.buyer_name = buyer_name
-                getOrder.payment_status = payment_status
-                getOrder.payment_mode = payment_mode
-                getOrder.save()
+                    getOrder.payment_id = payment_id
+                    getOrder.buyer_name = buyer_name
+                    getOrder.payment_status = payment_status
+                    getOrder.payment_mode = payment_mode
+                    getOrder.save()
+                except:
+                    return HttpResponse("invalid request")
 
         else:
             print("Invalid request")
+            return HttpResponse("invalid request")
 
         context = {
             'buyer_name' : getOrder.buyer_name,

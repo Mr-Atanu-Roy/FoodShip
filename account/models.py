@@ -14,7 +14,7 @@ address_preference_choices = (
 )
 
 class UserProfile(models.Model):
-    profile_id = models.CharField(max_length=255)
+    profile_id = models.CharField(max_length=255, unique=True, default = uuid.uuid4, primary_key=True, editable=False)
     email = models.CharField(max_length=255)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
@@ -29,7 +29,7 @@ class UserProfile(models.Model):
         return self.email
 
 class UserAddress(models.Model):
-    address_id = models.CharField(max_length=255, unique=True, default = uuid.uuid4, primary_key=True)
+    address_id = models.CharField(max_length=255, unique=True, default = uuid.uuid4, primary_key=True, editable=False)
     email = models.CharField(max_length=255)
     address_email = models.CharField(max_length=255, blank = True, null = True)
     state = models.CharField(max_length=255, blank=True, null=True)

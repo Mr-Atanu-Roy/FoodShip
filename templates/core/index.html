@@ -30,7 +30,7 @@ FoodShip | Order Food and Get Served Within Few Minutes
             </div>
             <div id="search-box" class="f-light text-lg">
                 <div id="autocomplete" class="autocomplete">
-                    <input class="autocomplete-input" placeholder="Search for your favourite dishes" />
+                    <input class="autocomplete-input" placeholder="Search for your favourite dishes" style="background-color: white" />
                     <ul class="autocomplete-result-list"></ul>
                 </div>
             </div>
@@ -186,21 +186,17 @@ FoodShip | Order Food and Get Served Within Few Minutes
 
     new Autocomplete("#autocomplete", {
         search : input => {
-            console.log(input)
             const url = `/search/?query=${(input)}`
-            console.log(url)
 
             return new Promise(resolve => {
                 fetch(url)
                 .then(response=>response.json())
                 .then(data => {
-                    console.log(data.payload)
                     resolve(data.payload)
                 })
             })
         },
         renderResult : (result, propes) => {
-            console.log(propes)
             let group = ''
             if(result.index % 3 == 0){
                 group = '<li class="group">Group</li>'
@@ -208,9 +204,9 @@ FoodShip | Order Food and Get Served Within Few Minutes
             return `
             ${(group)}
             <li ${(propes)}>
-                <a href="/products/view/${(result.product_id)}">
+                <a href="${(result.url)}">
                     <div class="wiki-title">
-                        ${(result.product_name)}
+                        ${(result.name)}
                     </div>
                 </a>
             </li>
