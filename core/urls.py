@@ -7,4 +7,5 @@ urlpatterns = [
     path('restaurants/', include('restaurant.urls')),
     path('products/', include('product.urls')),
     path('order/', include('order.urls')),
+    path('search/', include('dynamicSearch.urls')),
 ]

@@ -105,10 +105,6 @@ FoodShip | {{user.first_name}}'s Profile
                 <a href="{% url 'addAddress'%}">add another address</a>
             </button>
         </div>
-
-        {% for order in user_orders %}
-        {{order.product_id.restaurant}}
-        {% endfor %}
     </div>
 </section>
 

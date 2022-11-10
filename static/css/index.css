@@ -75,8 +75,8 @@ header #logo a:hover {
 
 #hero-container {
   height: calc(100vh - 30rem);
-  min-height: 30rem;
-  max-height: 57rem;
+  min-height: 35rem;
+  max-height: 60rem;
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -97,7 +97,7 @@ header #logo a:hover {
 
 #hero-wrapper {
   position: absolute;
-  top: 35%;
+  top: 28%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -131,22 +131,8 @@ header #logo a:hover {
   color: white;
 }
 
-#hero-wrapper #search-box div {
-  border-radius: 12px;
-  width: 600px;
-  height: 50px;
-  background: white;
-}
-
-#hero-wrapper #search-box div i {
-  color: gray;
-}
-
-#hero-wrapper #search-box div input {
-  width: 97%;
-  background: none;
-  border: none;
-  outline: none;
+#hero-wrapper #search-box {
+  width: 45%;
 }
 
 .explore-box {

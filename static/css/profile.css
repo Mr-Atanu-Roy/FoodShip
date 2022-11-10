@@ -55,16 +55,5 @@ section {
 
 .address-box {
   background-color: none;
-  -webkit-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-  border-bottom: 1.5px solid gray;
-}
-
-.address-box:hover {
-  background-color: #f8f8f8;
-}
-
-.address-box:hover i {
-  margin-left: 6px;
 }
 /*# sourceMappingURL=profile.css.map */

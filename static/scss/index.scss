@@ -31,8 +31,8 @@ header {
 
 #hero-container {
   height: calc(100vh - 30rem);
-  min-height: 30rem;
-  max-height: 57rem;
+  min-height: 35rem;
+  max-height: 60rem;
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -51,7 +51,7 @@ header {
 #hero-wrapper {
   position: absolute;
   //   bottom: calc(50% - 11.1rem);
-  top: 35%;
+  top: 28%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -68,22 +68,7 @@ header {
     // }
   }
   #search-box {
-    div {
-      border-radius: 12px;
-      width: 600px;
-      height: 50px;
-      // font-size: 1.8rem;
-      background: white;
-      i {
-        color: gray;
-      }
-      input {
-        width: 97%;
-        background: none;
-        border: none;
-        outline: none;
-      }
-    }
+    width: 45%;
   }
 }
 
