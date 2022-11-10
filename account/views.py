@@ -221,11 +221,11 @@ def addAddress(request):
             if phone == "":
                 phone = userProfile.phone
             
-            address_id = ""
-            e = request.user.email
-            address_id = e[:3]+address_id.join(random.choice('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz') for i in range(12))
+            # address_id = ""
+            # e = request.user.email
+            # address_id = e[:3]+address_id.join(random.choice('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz') for i in range(12))
 
-            newAddress = UserAddress(address_id = address_id, email = request.user.email)
+            newAddress = UserAddress(email = request.user.email)
             newAddress.address_email = email
             newAddress.phone = phone
             newAddress.landmark = landmark

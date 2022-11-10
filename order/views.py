@@ -1,15 +1,16 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from django.contrib.auth.decorators import login_required
+import random
 
-from product.models import *
+from django.conf import settings
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+from django.shortcuts import redirect, render
+
+from instamojo_wrapper import Instamojo
+
 from account.models import *
 from account.models import UserAddress
 from order.models import *
-
-import random
-from instamojo_wrapper import Instamojo
-from django.conf import settings
+from product.models import *
 
 api = Instamojo(api_key = settings.API_KEY, auth_token = settings.AUTH_TOKEN, endpoint='https://test.instamojo.com/api/1.1/')
 
@@ -54,7 +55,7 @@ def placeOrder(request, productID):
         payment_id = "MOJO" + payment_id
         offline_payment_url = f"http://127.0.0.1:8000/order/order-success?payment_id={payment_id}&payment_status=PayOnDelivery&payment_request_id={response['payment_request']['id']}"
 
-        newOrder, _ = Order.objects.get_or_create(order_id = response['payment_request']['id'], user = address.address_email, amount = f"{total_price} INR", product = product.product_name, phone = address.phone, address = address.address_id, quantity = quantity)
+        newOrder, _ = Order.objects.get_or_create(order_id = response['payment_request']['id'], user = request.user.email, address_email = address.address_email, amount = f"{total_price} INR", product = product, phone = address.phone, address = address, quantity = quantity)
         newOrder.save()
 
         context = {
