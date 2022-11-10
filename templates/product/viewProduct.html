@@ -1,0 +1,145 @@
+{% extends '../blocks/base.html' %}
+
+{% block title %}
+FoodShip | {{product.product_name | title}}
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/viewProduct.css">
+{% endblock css %}
+
+
+{% block body %}
+
+<section class="section px-32 pb-12">
+    <div>
+
+        <div id="product-view-box" class="grid grid-cols-3 gap-16 my-12">
+            
+            <div id="product-img-box">
+                <img src="/media/{{product.product_image}}" alt="">
+            </div>
+            <div id="product-info-box" class="col-span-2">
+                <h1 class="f-bold text-3xl capitalize mb-1.5">
+                    {{product.product_name}}
+                </h1>
+                <div class="flex text-lg f-light text-gray capitalize" style="color: gray;">
+                    <p><i class="fa fa-stop-circle" {% if product.food_type == 'non-veg' %}style="color:red;"{%else%}style="color:green;"{%endif%}></i> {{product.food_type}} | </p>
+                    <p class="ml-1"> {{product.meal_type}}</p>
+                </div>
+                <h3 class="f-light text-xl capitalize">{{product.restaurant}}</h3>
+                <h3 class="text-3xl f-bold mt-4">&#x20B9; <span id="product-price">{{product.price}}</span> </h3>
+
+                <div class="pt-8">
+                    <h3 class="f-light text-2xl py-1.5">Quantity</h3>
+                    <div id="quantity-box">
+                        <div class="value-button f-light text-2xl" id="decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
+                        <input type="number" id="number" class="f-bold text-xl" value="1" />
+                        <div class="value-button f-light text-2xl" id="increase" onclick="increaseValue()" value="Increase Value">+</div>
+                    </div>
+                    <div class="pt-10">
+                        <a href="/order/{{product.product_id}}?q=1" class="my-btn1" id="order-btn">Order now</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="similar-products">
+            {% if len_similar_products_mealType != 0%}
+            <div class="my-12">
+                <h3 class="f-bold text-2xl capitalize">
+                    more in {{product.meal_type}}
+                </h3>
+                <div class="grid grid-cols-4 gap-10 w-full mt-6">
+                    {% for p in similar_products_mealType%}
+                    <a href="/products/view/{{p.product_id}}" class="food-box">
+                        <div class="image-box pb-3">
+                            <img src="/media/{{p.product_image}}"
+                                alt="">
+                        </div>
+                        <div class="text-box grid grid-cols-3 gap-2 mt-3">
+                            <div class="col-span-2">
+                                <h3 class="f-bold text-xl capitalize">{{p.product_name}}</h3>
+                            </div>
+                            <div>
+                                <p class="text-lg f-bold" style="color: gray;">&#x20B9; {{p.price}}</p>
+                            </div>
+                        </div>
+                        <p class="text-lg f-light text-gray capitalize"><i class="fa fa-stop-circle" {% if p.food_type == 'non-veg' %}style="color:red;"{%else%}style="color:green;"{%endif%}></i> {{p.meal_type}}</p>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            {% if len_similar_products_foodType != 0 %}
+            <div class="my-12">
+                <h3 class="f-bold text-2xl capitalize">
+                    more in {{product.food_type}}
+                </h3>
+                <div class="grid grid-cols-4 gap-10 w-full mt-6">
+                    {% for p in similar_products_foodType%}
+                    <a href="/products/view/{{p.product_id}}" class="food-box">
+                        <div class="image-box pb-3">
+                            <img src="/media/{{p.product_image}}"
+                                alt="">
+                        </div>
+                        <div class="text-box grid grid-cols-3 gap-2 mt-3">
+                            <div class="col-span-2">
+                                <h3 class="f-bold text-xl capitalize">{{p.product_name}}</h3>
+                            </div>
+                            <div>
+                                <p class="text-lg f-bold" style="color: gray;">&#x20B9; {{p.price}}</p>
+                            </div>
+                        </div>
+                        <p class="text-lg f-light text-gray capitalize"><i class="fa fa-stop-circle" {% if p.food_type == 'non-veg' %}style="color:red;"{%else%}style="color:green;"{%endif%}></i> {{p.meal_type}}</p>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+
+<script>
+    const priceBox = document.getElementById('product-price');
+    const link = document.getElementById('order-btn');
+
+    const price = priceBox.innerHTML
+
+    function increaseValue() {
+    var value = parseInt(document.getElementById('number').value, 10);
+    value = isNaN(value) ? 0 : value;
+    value++;
+    document.getElementById('number').value = value;
+
+    q = document.getElementById('number').value;
+    link.href = "/order/{{product.product_id}}?q="+q;
+    
+    priceBox.innerHTML = (price*q).toFixed(2)
+    
+}
+
+function decreaseValue() {
+    var value = parseInt(document.getElementById('number').value, 10);
+    value = isNaN(value) ? 0 : value;
+    value < 1 ? value = 1 : '';
+    if(value > 1){
+        value--;
+    }
+    document.getElementById('number').value = value;
+    
+    q = document.getElementById('number').value;
+    link.href = "/order/{{product.product_id}}?q="+q;
+    
+    priceBox.innerHTML = (price*q).toFixed(2)
+}
+    
+
+</script>
+
+{% endblock body %}

@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&display=swap");
+.f-logo {
+  font-family: 'Fredoka One', cursive;
+}
+
+.f-bold, .my-btn1 {
+  font-family: 'Baloo 2', cursive;
+  font-weight: 600;
+}
+
+.f-light {
+  font-family: 'Baloo 2', cursive;
+  font-weight: 400;
+}
+
+section {
+  width: 100%;
+}
+
+.section {
+  padding-top: 90px;
+}
+
+.my-btn1 {
+  text-transform: uppercase;
+  color: white;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #f43f5e !important;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+}
+
+.my-btn1:hover {
+  background: #e11d48 !important;
+}
+
+#product-img-box {
+  border-radius: 15px;
+}
+
+#product-img-box img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+#quantity-box, #number, .value-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#quantity-box {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.value-button {
+  border: 1px solid #ddd;
+  margin: 0px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 11px 0;
+  background: #eee;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.value-button:hover {
+  cursor: pointer;
+}
+
+#decrease {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  margin-right: -4px;
+  border-radius: 8px 0 0 8px;
+}
+
+#increase {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  margin-left: -4px;
+  border-radius: 0 8px 8px 0;
+}
+
+#input-wrap {
+  margin: 0px;
+  padding: 0px;
+}
+
+#number {
+  text-align: center;
+  border: none;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  margin: 0px;
+  width: 45px;
+  height: 40px;
+  outline: none;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+          appearance: none;
+  margin: 0;
+}
+/*# sourceMappingURL=viewProduct.css.map */

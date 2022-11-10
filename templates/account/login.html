@@ -1,0 +1,33 @@
+{% extends '../blocks/base.html' %}
+
+{% block title %}
+FoodShip | LogIn
+{% endblock title %}
+
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/form.css">
+{% endblock css %}
+
+{% block body %}
+    <section id="authForm" class="section w-full flex justify-center items-center" style="min-height: 100vh">
+        <div class="shadow-lg rounded-lg p-10">
+            <h2 class="f-bold text-5xl capitalize">log in</h2>
+            <form action="" method="post" class="mt-8">
+                {% csrf_token %}
+                <div class="input-box my-6">
+                    <input type="text" name="email" value="{{email}}" placeholder="Email" class="w-full border rounded-lg">
+                    <p class="error">{{emailErr}}</p>
+                </div>
+                <div class="input-box my-6">
+                    <input type="password" name="password" value="{{password}}" placeholder="Password" class="w-full border rounded-lg">
+                    <p class="error">{{passwordErr}}</p>
+                </div>
+                <div class="input-box my-8 text-center">
+                    <p class="f-light text-xl">Does not have account ? <a href="{% url 'signIn' %}" style="color: #e11d48; text-decoration: underline;">Sign In</a></p>
+                </div>
+                <button type="submit" class="my-btn1 w-full">LogIn</button>
+            </form>
+        </div>
+    </section>
+{% endblock body %}

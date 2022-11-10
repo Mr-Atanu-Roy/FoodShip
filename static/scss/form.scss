@@ -1,0 +1,17 @@
+@import "./partials";
+
+form {
+  .input-box {
+    width: 435px;
+    input {
+      width: 100%;
+      font-size: 1.2rem;
+      height: 45px;
+      outline: none;
+      padding: 4px;
+    }
+  }
+  .error{
+    color: $secondary_colour;
+  }
+}

@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&display=swap");
+.f-logo {
+  font-family: 'Fredoka One', cursive;
+}
+
+.f-bold, .my-btn1 {
+  font-family: 'Baloo 2', cursive;
+  font-weight: 600;
+}
+
+.f-light {
+  font-family: 'Baloo 2', cursive;
+  font-weight: 400;
+}
+
+section {
+  width: 100%;
+}
+
+.section {
+  padding-top: 90px;
+}
+
+.my-btn1 {
+  text-transform: uppercase;
+  color: white;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #f43f5e !important;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+}
+
+.my-btn1:hover {
+  background: #e11d48 !important;
+}
+
+form .input-box {
+  width: 435px;
+}
+
+form .input-box input {
+  width: 100%;
+  font-size: 1.2rem;
+  height: 45px;
+  outline: none;
+  padding: 4px;
+}
+
+form .error {
+  color: #e11d48;
+}
+/*# sourceMappingURL=form.css.map */

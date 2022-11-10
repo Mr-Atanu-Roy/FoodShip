@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&display=swap");
+.f-logo {
+  font-family: 'Fredoka One', cursive;
+}
+
+.f-bold, .my-btn1 {
+  font-family: 'Baloo 2', cursive;
+  font-weight: 600;
+}
+
+.f-light {
+  font-family: 'Baloo 2', cursive;
+  font-weight: 400;
+}
+
+section {
+  width: 100%;
+}
+
+.section {
+  padding-top: 90px;
+}
+
+.my-btn1 {
+  text-transform: uppercase;
+  color: white;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #f43f5e !important;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+}
+
+.my-btn1:hover {
+  background: #e11d48 !important;
+}
+
+footer {
+  background: #f8f8f8;
+}
+
+footer ul li a {
+  text-transform: capitalize;
+  color: dimgray;
+}
+
+footer ul li a:hover {
+  color: black;
+}
+
+.f {
+  text-align: center;
+}
+
+header {
+  -webkit-transition: all 0.32s ease-in-out;
+  transition: all 0.32s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100000000;
+  background: none;
+  background: white !important;
+  -webkit-box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+          box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+
+header a {
+  color: black !important;
+}
+
+header #logo a {
+  -webkit-transition: all 0.45s ease-in-out;
+  transition: all 0.45s ease-in-out;
+}
+
+header #logo a:hover {
+  color: #f43f5e;
+}
+
+.payment-option-box {
+  background-color: none;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+
+.payment-option-box i {
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  margin-left: 2.8px;
+}
+
+.payment-option-box:hover {
+  background-color: #f8f8f8;
+}
+
+.payment-option-box:hover i {
+  margin-left: 6px;
+}
+/*# sourceMappingURL=order.css.map */

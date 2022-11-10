@@ -1,0 +1,78 @@
+{% extends '../blocks/base.html' %}
+
+{% block title %}
+FoodShip | View Products
+{% endblock title %}
+
+
+{% block css %}
+<!-- <link rel="stylesheet" href="/static/css/index.css"> -->
+{% endblock css %}
+
+{% block body %}
+<section id="products" class="section px-32 pb-16">
+    <div class="flex items-center justify-between flex-wrap mt-8 w-full">
+        <div class="flex items-center justify-evenly mb-12 w-full">
+            <a href="/products/biryani" class="food-category-box flex-col items-center justify-center">
+                <img class="w-28 rounded-full"
+                    src="/static/images/meal-types/biryani.png" alt="">
+                <h3 class="text-xl f-bold capitalize text-center">biryani</h3>
+            </a>
+            <a href="/products/snaks" class="food-category-box flex-col items-center justify-center">
+                <img class="w-28 rounded-full"
+                    src="/static/images/meal-types/snaks.png" alt="">
+                <h3 class="text-xl f-bold capitalize text-center">Snaks</h3>
+            </a>
+            <a href="/products/meal" class="food-category-box flex-col items-center justify-center">
+                <img class="w-28 rounded-full"
+                    src="/static/images/meal-types/meal.png" alt="">
+                <h3 class="text-xl f-bold capitalize text-center">Meal</h3>
+            </a>
+            <a href="/products/desert" class="food-category-box flex-col items-center justify-center">
+                <img class="w-28 rounded-full"
+                    src="/static/images/meal-types/desert.png">
+                    <h3 class="text-xl f-bold capitalize text-center">desert</h3>
+            </a>
+            <a href="/products/salad" class="food-category-box flex-col items-center justify-center">
+                <img class="w-28 rounded-full"
+                    src="/static/images/meal-types/salad.png" alt="">
+                <h3 class="text-xl f-bold capitalize text-center">salad</h3>
+            </a>
+            <a href="/products/starter" class="food-category-box flex-col items-center justify-center">
+                <img class="w-28 rounded-full"
+                    src="/static/images/meal-types/starter.png" alt="">
+                <h3 class="text-xl f-bold capitalize text-center">starter</h3>
+            </a>
+            <a href="/products/street-food" class="food-category-box flex-col items-center justify-center">
+                <img class="w-28 rounded-full"
+                    src="/static/images/meal-types/street-food.png" alt="">
+                <h3 class="text-xl f-bold capitalize text-center">street food</h3>
+            </a>
+            <a href="/products/drinks" class="food-category-box flex-col items-center justify-center">
+                <img class="w-28 rounded-full"
+                    src="/static/images/meal-types/drinks.png" alt="">
+                <h3 class="text-xl f-bold capitalize text-center">drinks</h3>
+            </a>
+        </div>
+        <div class="grid grid-cols-4 gap-10 mt-12 w-full">
+            {% for p in products%}
+            <a href="/products/view/{{p.product_id}}" class="food-box">
+                <div class="image-box pb-3">
+                    <img src="/media/{{p.product_image}}"
+                        alt="">
+                </div>
+                <div class="text-box grid grid-cols-3 gap-2 mt-3">
+                    <div class="col-span-2">
+                        <h3 class="f-bold text-xl capitalize">{{p.product_name}}</h3>
+                    </div>
+                    <div>
+                        <p class="text-lg f-bold" style="color: gray;">&#x20B9; {{p.price}}</p>
+                    </div>
+                </div>
+                <p class="text-lg f-light text-gray capitalize"><i class="fa fa-stop-circle" {% if p.food_type == 'non-veg' %}style="color:red;"{%else%}style="color:green;"{%endif%}></i> {{p.meal_type}}</p>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock body %}

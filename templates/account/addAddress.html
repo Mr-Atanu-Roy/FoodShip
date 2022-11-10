@@ -1,0 +1,73 @@
+{% extends '../blocks/base.html' %}
+
+{% block title %}
+FoodShip | Add Address
+{% endblock title %}
+
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/profile.css">
+{% endblock css %}
+
+{% block body %}
+
+
+<section class="section w-full flex justify-center items-center mb-16" style="min-height: 100vh">
+    <div class="shadow-lg rounded-lg p-10" style="max-width: 48%;">
+        <h3 class="f-bold text-2xl capitalize mb-3">add a new address</h3>
+        <form action="{% url 'addAddress' %}" method="post">
+            {% csrf_token %}
+            <div class="grid grid-cols-2 gap-4">
+                <div class="form-group mb-6">
+                    <label class="form-label inline-block mb-2 text-gray-700 f-bold capitalize">email</label>
+                    <input type="text" name="email" class="f-light form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" value="{{address_email}}">
+                </div>
+                <div class="form-group mb-6">
+                    <label class="form-label inline-block mb-2 text-gray-700 f-bold capitalize">phone</label>
+                    <input type="text" name="phone" placeholder="example 9663226589" class="f-light form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" value="{{address_phone}}">
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="form-group mb-6">
+                    <label class="form-label inline-block mb-2 text-gray-700 f-bold capitalize">state</label>
+                    <input type="text" name="state" class="f-light form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" value="{{address_state | title}}">
+                </div>
+                <div class="form-group mb-6">
+                    <label class="form-label inline-block mb-2 text-gray-700 f-bold capitalize">city</label>
+                    <input type="text" name="city" class="f-light form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" value="{{address_city | title}}">
+                </div>
+            </div>
+            <div class="grid grid-cols-1 gap-4">
+                <div class="form-group mb-6">
+                    <label class="form-label inline-block mb-2 text-gray-700 f-bold capitalize">street</label>
+                    <input type="text" name="street" placeholder="your street name" class="f-light form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" value="{{address_street}}">
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="form-group mb-6">
+                    <label class="form-label inline-block mb-2 text-gray-700 f-bold capitalize">landmark</label>
+                    <input type="text" name="landmark" placeholder="a identifying landmark" class="f-light form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" value="{{address_landmark}}">
+                </div>
+                <div class="form-group mb-6">
+                    <label class="form-label inline-block mb-2 text-gray-700 f-bold capitalize">pin code</label>
+                    <input type="text" name="pin" placeholder="6 digit pin code" class="f-light form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" value="{{address_pin}}">
+                </div>
+            </div>
+            <div class="grid grid-cols-1 gap-4">
+                <div class="form-group mb-6">
+                    <label class="form-label inline-block mb-2 text-gray-700 f-bold capitalize">address type</label>
+                    <select name="address_type" class="form-select capitalize w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+                        <option value="home" {% if address_type == "home" %}selected{% endif %}>home</option>
+                        <option value="office" {% if address_type == "office" %}selected{% endif %}>office</option>
+                    </select>
+                </div>
+            </div>
+            <div class="pt-3">
+                <button class="my-btn1 w-full uppercase">add address</button>
+            </div>
+        </form>
+        
+    </div>
+</section>
+
+{% endblock body %}

@@ -1,0 +1,15 @@
+footer{
+    background: rgb(248, 248, 248);
+
+    ul{
+        li{
+            a{
+                text-transform: capitalize;
+                color: rgb(105, 105, 105);
+                &:hover{
+                    color: black;
+                }
+            }
+        }
+    }
+}

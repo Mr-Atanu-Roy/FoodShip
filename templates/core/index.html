@@ -1,0 +1,185 @@
+{% extends '../blocks/base.html' %}
+
+{% block title %}
+FoodShip | Order Food and Get Served Within Few Minutes
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/index.css">
+{% endblock css %}
+
+
+{% block body %}
+
+<section id="hero">
+    <div id="hero-container">
+        <div>
+            <img src="/static/images/home-page/hero/hero-cover.png" alt="" id="hero-img">
+        </div>
+        <div id="hero-wrapper">
+            <div id="great-box" class="mb-10">
+                <h1 class="f-logo text-6xl mb-6 text-underline">
+                    FoodShip
+                </h1>
+                <h2 class="text-lg f-bold capitalize text-3xl">
+                    Discover the best foods and Restaurants in {{user_city}}
+                </h2>
+            </div>
+            <div id="search-box" class="f-light text-lg">
+                <div class="flex items-center justify-center p-2">
+                    <label for="search"><i class="fa fa-search px-4 cursor-pointer"></i></label>
+                    <input type="text" id="search" placeholder="Search for restaurant, cuisine or a dish">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="explore" class="my-10">
+    <div class="flex items-center justify-center w-full">
+        <a href="{% url 'products' %}" class="explore-box mx-8 my-4">
+            <div class="image-box">
+                <img src="/static/images/home-page/explore/explore-1.jpeg" alt="">
+            </div>
+            <div class="text-box py-5">
+                <h3 class="text-3xl f-bold capitalize">Order online</h3>
+                <p class="text-xl f-light">Stay home and order to your doorsteps</p>
+            </div>
+        </a>
+        <a href="{% url 'restaurants' %}" class="explore-box mx-8 my-4">
+            <div class="image-box">
+                <img src="/static/images/home-page/explore/explore-2.jpeg" alt="">
+            </div>
+            <div class="text-box py-5">
+                <h3 class="text-3xl f-bold capitalize">View restaurants</h3>
+                <p class="text-xl f-light">View the city's favourite restaurants</p>
+            </div>
+        </a>
+        <a href="/restaurants/pub" class="explore-box mx-8 my-4">
+            <div class="image-box">
+                <img src="/static/images/home-page/explore/explore-3.jpeg" alt="">
+            </div>
+            <div class="text-box py-5">
+                <h3 class="text-3xl f-bold capitalize">nightlife and clubs</h3>
+                <p class="text-xl f-light">Explore city's top nightclub and outlets</p>
+            </div>
+        </a>
+    </div>
+</section>
+
+<section id="restaurants" class="my-10 px-10">
+    <div class="w-full">
+        <div class="my-4">
+            <h2 class="text-5xl f-bold capitalize">
+                restaurants near you
+            </h2>
+            <h3 class="f-light text-2xl my-2">
+                Explore curated lists of top restaurants, cafes, pubs, and bars near you
+            </h3>
+        </div>
+        <div class="flex items-center justify-evenly flex-wrap mt-8">
+            {% for r in restaurants %}
+            <a href="/restaurants/view/{{r.restaurant_id}}" class="restaurant-box mx-6 my-4 p-2">
+                <div class="image-box">
+                    <!-- <img src="/media/{{r.restaurant_image}}" alt=""> -->
+                    <img class="rounded-lg" src="/media/{{r.restaurant_image}}"
+                        alt="">
+                </div>
+                <div class="grid grid-cols-3 gap-2 mt-3">
+                    <div class="col-span-2">
+                        <h3 class="text-2xl capitalize f-bold">
+                            {{r.restaurant_name}}
+                        </h3>
+                        <p class="text-base f-light capitalize">
+                            {{r.restaurant_type}} <i class="fa fa-caret-right text-xl ml-2"></i>
+                        </p>
+                    </div>
+                    <div class="text-right f-bold text-lg">
+                        <div><i class="fa fa-star" style="color: green;"></i> 4.3</div>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section id="foods" class="my-16 px-32">
+    <div class="w-full">
+        <div class="my-4">
+            <h2 class="text-3xl f-bold capitalize text-center">
+                order your favourite food
+            </h2>
+        </div>
+        <div class="flex items-center justify-evenly my-8">
+            <a href="/products/biryani" class="food-category-box flex-col items-center justify-center">
+                <img class="w-28 rounded-full"
+                    src="/static/images/meal-types/biryani.png" alt="">
+                <h3 class="text-xl f-bold capitalize text-center">biryani</h3>
+            </a>
+            <a href="/products/snaks" class="food-category-box flex-col items-center justify-center">
+                <img class="w-28 rounded-full"
+                    src="/static/images/meal-types/snaks.png" alt="">
+                <h3 class="text-xl f-bold capitalize text-center">Snaks</h3>
+            </a>
+            <a href="products/meal" class="food-category-box flex-col items-center justify-center">
+                <img class="w-28 rounded-full"
+                    src="/static/images/meal-types/meal.png" alt="">
+                <h3 class="text-xl f-bold capitalize text-center">Meal</h3>
+            </a>
+            <a href="products/desert" class="food-category-box flex-col items-center justify-center">
+                <img class="w-28 rounded-full"
+                    src="/static/images/meal-types/desert.png">
+                    <h3 class="text-xl f-bold capitalize text-center">desert</h3>
+            </a>
+            <a href="/products/salad" class="food-category-box flex-col items-center justify-center">
+                <img class="w-28 rounded-full"
+                    src="/static/images/meal-types/salad.png" alt="">
+                <h3 class="text-xl f-bold capitalize text-center">salad</h3>
+            </a>
+            <a href="/products/starter" class="food-category-box flex-col items-center justify-center">
+                <img class="w-28 rounded-full"
+                    src="/static/images/meal-types/starter.png" alt="">
+                <h3 class="text-xl f-bold capitalize text-center">starter</h3>
+            </a>
+            <a href="/products/street-food" class="food-category-box flex-col items-center justify-center">
+                <img class="w-28 rounded-full"
+                    src="/static/images/meal-types/street-food.png" alt="">
+                <h3 class="text-xl f-bold capitalize text-center">street food</h3>
+            </a>
+            <a href="/products/drinks" class="food-category-box flex-col items-center justify-center">
+                <img class="w-28 rounded-full"
+                    src="/static/images/meal-types/drinks.png" alt="">
+                <h3 class="text-xl f-bold capitalize text-center">drinks</h3>
+            </a>
+        </div>
+        <div class="grid grid-cols-4 gap-10 mt-12">
+            {% for p in products%}
+            <a href="/products/view/{{p.product_id}}" class="food-box">
+                <div class="image-box pb-3">
+                    <img src="/media/{{p.product_image}}"
+                        alt="">
+                </div>
+                <div class="text-box grid grid-cols-3 gap-2 mt-3">
+                    <div class="col-span-2">
+                        <h3 class="f-bold text-xl capitalize">{{p.product_name}}</h3>
+                    </div>
+                    <div>
+                        <p class="text-lg f-bold" style="color: gray;">&#x20B9; {{p.price}}</p>
+                    </div>
+                </div>
+                <p class="text-lg f-light text-gray capitalize"><i class="fa fa-stop-circle" {% if p.food_type == 'non-veg' %}style="color:red;"{%else%}style="color:green;"{%endif%}></i> {{p.meal_type}}</p>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<script>
+    window.addEventListener('scroll', function () {
+        var header = document.querySelector('header')
+        header.classList.toggle('sticky', window.scrollY > 0)
+    })
+</script>
+
+{% endblock body %}

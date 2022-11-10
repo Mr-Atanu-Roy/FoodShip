@@ -1,0 +1,154 @@
+{% extends '../blocks/base.html' %}
+
+{% block title %}
+FoodShip | {{restaurant.restaurant_name | title}}
+{% endblock title %}
+
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/restaurantView.css">
+{% endblock css %}
+
+{% block body %}
+
+<section class="section px-32 pb-12">
+    <div>
+        <div class="restaurant-img-box">
+            <div>
+                <img src="/static/images/room-g9091aa72e_1920.jpg" alt="">
+            </div>
+        </div>
+        <div class="my-4" id="header-box">
+            <div class="grid grid-cols-6 gap-5 my-2">
+                <div class="col-span-5">
+                    <h1 class="f-bold text-5xl mb-3 capitalize">{{restaurant.restaurant_name}}</h1>
+                    <p class="f-light text-2xl capitalize">{{restaurant.facilities}}</p>
+                    <p class="f-light text-xl capitalize" style="color: gray;">{{restaurant.street}},
+                        {{restaurant.city}}-{{restaurant.pin}}</p>
+                    <p class="f-light text-xl" style="color: gray;"><span style="color: #f43f5e;" class="mr-1">Open Hours : </span> {{restaurant.timing}}</p>
+                </div>
+                <div class="col-span-1 pt-5 ">
+                    <div class="flex f-bold text-xl">
+                        <i class="fa fa-star" style="color: green;"></i> {{restaurant.rating}} <span
+                            class="f-light ml-1">(over all rating)</span>
+                    </div>
+                    <div class="flex-col f-bold text-xl mt-6">
+                        <div>
+                            <span style="color: #f43f5e;" class="mr-1">Call : </span>{{restaurant.phone}}
+                        </div>
+                        <div>
+                            <span style="color: #f43f5e;" class="mr-1">Call : </span>{{restaurant.phone}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full" style="background-color: #f43f5e; height: 2px"></div>
+        </div>
+        <div class="my-5" id="body-box">
+            <div id="facilities">
+                <h3 class="f-bold text-2xl capitalize">facilities</h3>
+                <div class="flex flex-wrap w-1/2 my-3">
+                    {% if restaurant.home_delivery == True %}
+                <div class="f-light text-xl capitalize facility-box">
+                    <span style="color: green;"><i class="fa fa-check-circle-o mr-1"></i></span> home delivery
+                </div>
+                {% endif %}
+                    {% if restaurant.full_bar_available == True %}
+                <div class="f-light text-xl capitalize facility-box">
+                    <span style="color: green;"><i class="fa fa-check-circle-o mr-1"></i></span> full bar available
+                </div>
+                {% endif %}
+                    {% if restaurant.takeaway_available == True %}
+                <div class="f-light text-xl capitalize facility-box">
+                    <span style="color: green;"><i class="fa fa-check-circle-o mr-1"></i></span> takeaway available
+                </div>
+                {% endif %}
+                    {% if restaurant.vegitarian_only == True %}
+                <div class="f-light text-xl capitalize facility-box">
+                    <span style="color: green;"><i class="fa fa-check-circle-o mr-1"></i></span> vegitarian only
+                </div>
+                {% endif %}
+                    {% if restaurant.live_sports_screening == True %}
+                <div class="f-light text-xl capitalize facility-box">
+                    <span style="color: green;"><i class="fa fa-check-circle-o mr-1"></i></span> live sports screening
+                </div>
+                {% endif %}
+                    {% if restaurant.deserts_and_bakes == True %}
+                <div class="f-light text-xl capitalize facility-box">
+                    <span style="color: green;"><i class="fa fa-check-circle-o mr-1"></i></span> deserts and bakes
+                </div>
+                {% endif %}
+                    {% if restaurant.live_music == True %}
+                <div class="f-light text-xl capitalize facility-box">
+                    <span style="color: green;"><i class="fa fa-check-circle-o mr-1"></i></span> live music
+                </div>
+                {% endif %}
+                    {% if restaurant.smoking_area == True %}
+                <div class="f-light text-xl capitalize facility-box">
+                    <span style="color: green;"><i class="fa fa-check-circle-o mr-1"></i></span> smoking area
+                </div>
+                {% endif %}
+                    {% if restaurant.family_dining == True %}
+                <div class="f-light text-xl capitalize facility-box">
+                    <span style="color: green;"><i class="fa fa-check-circle-o mr-1"></i></span> family dining
+                </div>
+                {% endif %}
+                    {% if restaurant.romantic_dining == True %}
+                <div class="f-light text-xl capitalize facility-box">
+                    <span style="color: green;"><i class="fa fa-check-circle-o mr-1"></i></span> romantic dining
+                </div>
+                {% endif %}
+                    {% if restaurant.indoor_seating == True %}
+                <div class="f-light text-xl capitalize facility-box">
+                    <span style="color: green;"><i class="fa fa-check-circle-o mr-1"></i></span> indoor seating
+                </div>
+                {% endif %}
+                    {% if restaurant.outdoor_seating == True %}
+                <div class="f-light text-xl capitalize facility-box">
+                    <span style="color: green;"><i class="fa fa-check-circle-o mr-1"></i></span> outdoor seating
+                </div>
+                {% endif %}
+                    {% if restaurant.nightlife == True %}
+                <div class="f-light text-xl capitalize facility-box">
+                    <span style="color: green;"><i class="fa fa-check-circle-o mr-1"></i></span> nightlife
+                </div>
+                {% endif %}
+                    {% if restaurant.free_wifi == True %}
+                <div class="f-light text-xl capitalize facility-box">
+                    <span style="color: green;"><i class="fa fa-check-circle-o mr-1"></i></span> free wifi
+                </div>
+                {% endif %}
+                    {% if restaurant.pool == True %}
+                <div class="f-light text-xl capitalize facility-box">
+                    <span style="color: green;"><i class="fa fa-check-circle-o mr-1"></i></span> pool 
+                </div>
+                {% endif %}
+                </div> 
+            </div>
+            <div id="product-box">
+                <h3 class="f-bold text-2xl capitalize">order from here</h3>
+                <div class="grid grid-cols-4 gap-10 my-4 w-full">
+                    {% for p in products%}
+                    <a href="/products/view/{{p.product_id}}" class="food-box">
+                        <div class="image-box pb-3">
+                            <img src="/media/{{p.product_image}}"
+                                alt="">
+                        </div>
+                        <div class="text-box grid grid-cols-3 gap-2 mt-3">
+                            <div class="col-span-2">
+                                <h3 class="f-bold text-xl capitalize">{{p.product_name}}</h3>
+                            </div>
+                            <div>
+                                <p class="text-lg f-bold" style="color: gray;">&#x20B9; {{p.price}}</p>
+                            </div>
+                        </div>
+                        <p class="text-lg f-light text-gray capitalize"><i class="fa fa-stop-circle" {% if p.food_type == 'non-veg' %}style="color:red;"{%else%}style="color:green;"{%endif%}></i> {{p.meal_type}}</p>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock body %}

@@ -1,0 +1,173 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&display=swap");
+.f-logo {
+  font-family: 'Fredoka One', cursive;
+}
+
+.f-bold, .my-btn1 {
+  font-family: 'Baloo 2', cursive;
+  font-weight: 600;
+}
+
+.f-light {
+  font-family: 'Baloo 2', cursive;
+  font-weight: 400;
+}
+
+section {
+  width: 100%;
+}
+
+.section {
+  padding-top: 90px;
+}
+
+.my-btn1 {
+  text-transform: uppercase;
+  color: white;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #f43f5e !important;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+}
+
+.my-btn1:hover {
+  background: #e11d48 !important;
+}
+
+header {
+  -webkit-transition: all 0.32s ease-in-out;
+  transition: all 0.32s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100000000;
+  background: none !important;
+  -webkit-box-shadow: 0 0 0 0 !important;
+          box-shadow: 0 0 0 0 !important;
+}
+
+header a {
+  color: white !important;
+}
+
+header #logo a {
+  -webkit-transition: all 0.45s ease-in-out;
+  transition: all 0.45s ease-in-out;
+}
+
+header #logo a:hover {
+  color: #f43f5e !important;
+}
+
+.sticky {
+  background: white !important;
+  -webkit-box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+          box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+
+.sticky a {
+  color: black !important;
+}
+
+#hero-container {
+  height: calc(100vh - 30rem);
+  min-height: 30rem;
+  max-height: 57rem;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+#hero-img {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: 0px;
+}
+
+#hero-wrapper {
+  position: absolute;
+  top: 35%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+#hero-wrapper #great-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+}
+
+#hero-wrapper #search-box div {
+  border-radius: 12px;
+  width: 600px;
+  height: 50px;
+  background: white;
+}
+
+#hero-wrapper #search-box div i {
+  color: gray;
+}
+
+#hero-wrapper #search-box div input {
+  width: 97%;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.explore-box {
+  border-radius: 10px;
+}
+
+.explore-box .image-box {
+  overflow: hidden;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+
+.explore-box .image-box img {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  -webkit-transition: all 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
+}
+
+.explore-box .image-box:hover img {
+  -webkit-transform: scale(1.06);
+          transform: scale(1.06);
+}
+/*# sourceMappingURL=index.css.map */

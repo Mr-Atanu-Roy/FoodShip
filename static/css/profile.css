@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&display=swap");
+.f-logo {
+  font-family: 'Fredoka One', cursive;
+}
+
+.f-bold, .my-btn1 {
+  font-family: 'Baloo 2', cursive;
+  font-weight: 600;
+}
+
+.f-light {
+  font-family: 'Baloo 2', cursive;
+  font-weight: 400;
+}
+
+section {
+  width: 100%;
+}
+
+.section {
+  padding-top: 90px;
+}
+
+.my-btn1 {
+  text-transform: uppercase;
+  color: white;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #f43f5e !important;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+}
+
+.my-btn1:hover {
+  background: #e11d48 !important;
+}
+
+#profile-pic {
+  position: relative;
+  left: 0%;
+  top: 0;
+  width: 220px;
+}
+
+.profile-label {
+  color: #e11d48;
+}
+
+.profile-box {
+  border-bottom: 2px solid #e11d48;
+}
+
+.address-box {
+  background-color: none;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  border-bottom: 1.5px solid gray;
+}
+
+.address-box:hover {
+  background-color: #f8f8f8;
+}
+
+.address-box:hover i {
+  margin-left: 6px;
+}
+/*# sourceMappingURL=profile.css.map */

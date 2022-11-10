@@ -1,0 +1,43 @@
+{% extends '../blocks/base.html' %}
+
+{% block title %}
+FoodShip | Order Successfull {{product | title}}
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/order.css">
+{% endblock css %}
+
+
+{% block body %}
+
+<section class="section w-full flex justify-center items-center mb-16" style="min-height: 100vh">
+    <div class="shadow-lg rounded-lg p-14" style="max-width: 48%;">
+        <div class="grid grid-cols-2 gap-12">
+            <div class="text-left f-bold text-xl flex-col items-center justify-start capitalize">
+                <p>Product</p>
+                <p>buyer name</p>
+                <p>total price</p>
+                <p>address</p>
+                <p>payment id</p>
+                <p>order id</p>
+                <p>payment status</p>
+                <p>payment mode</p>
+                <p>payment date</p>
+            </div>
+            <div class="text-right f-light text-xl flex-col items-center justify-start capitalize">
+                <p>{{product}}</p>
+                <p>{{buyer_name}}</p>
+                <p>{{amount}}</p>
+                <p>{{address}}</p>
+                <p>{{payment_id}}</p>
+                <p>{{order_id}}</p>
+                <p>{{payment_status}}</p>
+                <p>{{payment_mode}}</p>
+                <p>{{payment_date}}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock body %}

@@ -1,0 +1,65 @@
+{% extends '../blocks/base.html' %}
+
+{% block title %}
+FoodShip | {{type | title}}
+{% endblock title %}
+
+
+{% block css %}
+<!-- <link rel="stylesheet" href="/static/css/index.css"> -->
+{% endblock css %}
+
+{% block body %}
+<section id="restaurants" class="section px-32 pb-12">
+    <div class="flex items-center justify-evenly mb-12 mt-10 w-full">
+        <a href="/restaurants/family" class="flex-col items-center justify-center">
+            <img class="w-28 rounded-full"
+                src="/static/images/restaurant-types/family.png" alt="">
+            <h3 class="text-xl f-bold capitalize text-center">Family</h3>
+        </a>
+        <a href="/restaurants/fast-food" class="flex-col items-center justify-center">
+            <img class="w-28 rounded-full"
+                src="/static/images/restaurant-types/fast-food.png" alt="">
+            <h3 class="text-xl f-bold capitalize text-center">Fast food</h3>
+        </a>
+        <a href="/restaurants/dinner" class="flex-col items-center justify-center">
+            <img class="w-28 rounded-full"
+                src="/static/images/restaurant-types/dinner.png" alt="">
+            <h3 class="text-xl f-bold capitalize text-center">Dinner</h3>
+        </a>
+        <a href="/restaurants/pub" class="flex-col items-center justify-center">
+            <img class="w-28 rounded-full"
+                src="/static/images/restaurant-types/pub.png" alt="">
+            <h3 class="text-xl f-bold capitalize text-center">pub</h3>
+        </a>
+        <a href="/restaurants/cafe" class="flex-col items-center justify-center">
+            <img class="w-28 rounded-full"
+                src="/static/images/restaurant-types/cafe.png" alt="">
+            <h3 class="text-xl f-bold capitalize text-center">cafe</h3>
+        </a>
+    </div>
+    <div class="grid grid-cols-4 gap-10 mt-12 w-full">
+        {% for r in restaurants %}
+        <a href="/restaurants/view/{{r.restaurant_id}}" class="restaurant-box mx-6 my-4 p-2">
+            <div class="image-box">
+                <!-- <img src="/media/{{r.restaurant_image}}" alt=""> -->
+                <img class="rounded-lg" src="/media/{{r.restaurant_image}}" alt="">
+            </div>
+            <div class="grid grid-cols-3 gap-2 mt-3">
+                <div class="col-span-2">
+                    <h3 class="text-2xl capitalize f-bold">
+                        {{r.restaurant_name}}
+                    </h3>
+                    <p class="text-base f-light capitalize">
+                        {{r.restaurant_type}} <i class="fa fa-caret-right text-xl ml-2"></i>
+                    </p>
+                </div>
+                <div class="text-right f-bold text-lg">
+                    <div><i class="fa fa-star" style="color: green;"></i> 4.3</div>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endblock body %}

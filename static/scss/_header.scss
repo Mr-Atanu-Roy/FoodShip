@@ -1,0 +1,28 @@
+$primary_colour : #f43f5e;
+$secondary_colour : #e11d48;
+
+.f {
+  text-align: center;
+}
+
+header {
+  transition: all 0.32s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100000000;
+  background: none;
+  background: white !important;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+  a {
+    color: black !important;
+  }
+  #logo {
+    a {
+      transition: all 0.45s ease-in-out;
+      &:hover {
+        color: $primary_colour;
+      }
+    }
+  }
+}

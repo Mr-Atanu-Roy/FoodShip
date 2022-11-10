@@ -1,0 +1,111 @@
+{% extends '../blocks/base.html' %}
+
+{% block title %}
+FoodShip | {{user.first_name}}'s Profile
+{% endblock title %}
+
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/profile.css">
+{% endblock css %}
+
+{% block body %}
+
+
+<section class="section w-full flex justify-center items-center mb-16" style="min-height: 100vh">
+    <div class="shadow-lg rounded-lg p-10" style="max-width: 48%;">
+        <!-- personal info -->
+        <h3 class="f-bold text-2xl capitalize mb-3">your profile</h3>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="grid grid-cols-2 gap-4">
+                <div class="form-group mb-6">
+                    <label class="form-label inline-block mb-2 text-gray-700 f-bold capitalize">First Name</label>
+                    <input type="text" name="fname" placeholder="example John" class="f-light form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" value="{{fname}}">
+                </div>
+                <div class="form-group mb-6">
+                    <label class="form-label inline-block mb-2 text-gray-700 f-bold capitalize">last Name</label>
+                    <input type="text" name="lname" placeholder="example Maxwell" class="f-light form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" value="{{lname}}">
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="form-group mb-6">
+                    <label class="form-label inline-block mb-2 text-gray-700 f-bold capitalize">email</label>
+                    <input type="text" name="email" class="f-light form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none cursor-not-allowed" value="{{user.email}}" disabled>
+                </div>
+                <div class="form-group mb-6">
+                    <label class="form-label inline-block mb-2 text-gray-700 f-bold capitalize">phone</label>
+                    <input type="text" name="phone" placeholder="example 9663226589" class="f-light form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" value="{{phone}}">
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="form-group mb-6">
+                    <label class="form-label inline-block mb-2 text-gray-700 f-bold capitalize">gender</label>
+                    <select name="gender" class="form-select capitalize w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+                        <option value="male" {% if gender == "male" %}selected{% endif %}>male</option>
+                        <option value="female" {% if gender == "female" %}selected{% endif %}>female</option>
+                        <option value="not specify" {% if gender == "not specify" %}selected{% endif %}>not specify</option>
+                    </select>
+                </div>
+                <div class="form-group mb-6">
+                    <label class="form-label inline-block mb-2 text-gray-700 f-bold capitalize">country</label>
+                    <input type="text" name="country" class="f-light form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" value="{{country | title}}">
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="form-group mb-6">
+                    <label class="form-label inline-block mb-2 text-gray-700 f-bold capitalize">city</label>
+                    <input type="text" name="city" class="f-light form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" value="{{city | title}}">
+                </div>
+                <div class="form-group mb-6">
+                    <label class="form-label inline-block mb-2 text-gray-700 f-bold capitalize">pin code</label>
+                    <input type="text" name="pin" placeholder="6 digit pin code" class="f-light form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" value="{{pin}}">
+                </div>
+            </div>
+            <div class="pt-3">
+                <button class="my-btn1 w-full uppercase">make changes</button>
+            </div>
+        </form>
+        <hr class="my-8">
+        <!-- address -->
+        <h3 class="f-bold text-2xl capitalize mb-3">your addresses</h3>
+        {% if user_address_no != 0 %}
+        {% for address in user_address %}
+        <div class="address-box-lg my-3 pb-4">
+            <a href="#">
+                <h3 class="text-xl f-bold capitalize"> 
+                    <span style="color: #f43f5e">
+                    {% if address.address_type == "home" %}
+                    <i class="fa fa-home"></i>
+                    {% else %}   
+                    <i class="fa fa-building"></i>                 
+                    {% endif %}
+                    </span>
+                    {{address.city}}, {{address.landmark}}, {{address.pin}}
+                    {% if address.address_preference == "primary" %}
+                        <span class="f-light uppercase" style="color: #f43f5e">
+                            (primary)
+                        </span>
+                    {% endif %}
+
+                </h3>
+                <p class="text-xl f-light">{{address.street}}</p>
+                <div class="flex items center justify-start">
+                    <p class="text-lg f-light">Email - {{address.address_email}}</p>
+                    <p class="text-lg f-light ml-4">Phone - {{address.phone}}</p>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+        {% else %}
+        <h3 class="f-light text-xl mb-3">You haven't added any address till now. Add one to order food</h3>
+        {% endif %}
+        <div class="py-4 w-full">
+            <button class="my-btn1 w-full">
+                <a href="{% url 'addAddress'%}">add another address</a>
+            </button>
+        </div>
+    </div>
+</section>
+
+{% endblock body %}

@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&display=swap');
+
+$primary_colour : #f43f5e;
+$secondary_colour : #e11d48;
+
+.f-logo{
+    font-family: 'Fredoka One', cursive;
+}
+.f-bold{
+    font-family: 'Baloo 2', cursive;
+    font-weight: 600;
+}
+.f-light{
+    font-family: 'Baloo 2', cursive;
+    font-weight: 400;
+}
+
+section{
+    width: 100%;
+}
+.section{
+    padding-top: 90px;
+}
+
+.my-btn1 {
+    @extend .f-bold;
+    text-transform: uppercase;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    background-color: $primary_colour !important;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    &:hover {
+      background: $secondary_colour !important;
+    }
+  }

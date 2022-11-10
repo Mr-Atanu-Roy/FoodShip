@@ -1,0 +1,28 @@
+<header class="w-full flex items-center justify-evenly py-4 px-5">
+  <div id="logo" class="text-4xl f-logo">
+    <a href="/">FoodShip</a>
+  </div>
+  <ul class="flex items-center justify-center capitalize f-light text-2xl">
+    <li class="px-3">
+      <a href="{% url 'restaurants' %}">view Restaurants</a>
+    </li>
+    <li class="px-3">
+      <a href="{% url 'products' %}">Order Food</a>
+    </li>
+    {% if user.is_authenticated %}
+    <li class="px-3">
+        <a href="{% url 'logOut' %}">Log out</a>
+    </li>
+    <li class="px-3">
+        <a href="{% url 'userProfile' %}"><i class="fa fa-user"></i> {{request.user.first_name}} </a>
+    </li>
+    {% else %}
+    <li class="px-3">
+        <a href="{% url 'logIn' %}">Log in</a>
+    </li>
+    <li class="px-3">
+        <a href="{% url 'signIn' %}">Sign in</a>
+    </li>
+    {% endif %}
+  </ul>
+</header>
