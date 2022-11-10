@@ -71,7 +71,7 @@ FoodShip | {{user.first_name}}'s Profile
         <h3 class="f-bold text-2xl capitalize mb-3">your addresses</h3>
         {% if user_address_no != 0 %}
         {% for address in user_address %}
-        <div class="address-box-lg my-3 pb-4">
+        <div class="address-box my-3 pb-2.5" style="border-bottom: 1.8px solid #f43f5e">
             <a href="#">
                 <h3 class="text-xl f-bold capitalize"> 
                     <span style="color: #f43f5e">
@@ -105,6 +105,10 @@ FoodShip | {{user.first_name}}'s Profile
                 <a href="{% url 'addAddress'%}">add another address</a>
             </button>
         </div>
+
+        {% for order in user_orders %}
+        {{order.product_id.restaurant}}
+        {% endfor %}
     </div>
 </section>
 
