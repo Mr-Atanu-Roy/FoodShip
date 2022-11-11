@@ -27,7 +27,7 @@ class Order(models.Model):
     payment_mode = models.CharField(max_length = 255, blank = True)
     order_status = models.CharField(max_length = 255, choices = order_status_choices, default = "canceled")
     address = models.ForeignKey(UserAddress, on_delete=models.CASCADE, default="")
-    payment_date = models.DateTimeField(default=timezone.now)
+    payment_date = models.DateField(default=timezone.now)
 
     def __str__(self):
         return self.order_id
