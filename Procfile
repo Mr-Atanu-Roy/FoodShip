@@ -1,0 +1,1 @@
+web: gunicorn FoodShip.wesgi --log-file -
