@@ -2,6 +2,7 @@ from django.db import models
 
 from django.utils import timezone
 import uuid
+from auditlog.registry import auditlog
 
 from restaurant.models import *
 
@@ -56,3 +57,7 @@ class ProductReview(models.Model):
 
     def __str__(self):
         return f"{self.product}/{self.user}"
+
+
+auditlog.register(Product)  
+auditlog.register(ProductReview) 

@@ -1,6 +1,8 @@
 from django.db import models
 import uuid
 
+from auditlog.registry import auditlog
+
 # Create your models here.
 
 address_type_choices = (
@@ -44,4 +46,7 @@ class UserAddress(models.Model):
     
     def __str__(self):
         return self.email+"/"+self.address_preference
-    
+
+
+auditlog.register(UserProfile)  
+auditlog.register(UserAddress)  

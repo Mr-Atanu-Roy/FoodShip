@@ -3,6 +3,8 @@ from django.db import models
 from django.utils import timezone
 import uuid
 
+from auditlog.registry import auditlog
+
 restaurant_type_choices = (
         ('family', 'family'),
         ('pub', 'pub'),
@@ -55,3 +57,6 @@ class RestaurantReview(models.Model):
     review = models.TextField()
     rating = models.DecimalField(max_digits = 2, decimal_places=1)
     added_on = models.DateField(default=timezone.now)
+
+auditlog.register(Restaurant)  
+auditlog.register(RestaurantReview) 

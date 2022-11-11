@@ -47,6 +47,9 @@ INSTALLED_APPS = [
     'order',
     'API', #this app is for api requests
 
+    #third-party
+    'auditlog',
+
 ]
 
 MIDDLEWARE = [
@@ -57,6 +60,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # third-party
+    'auditlog.middleware.AuditlogMiddleware',
 ]
 
 ROOT_URLCONF = 'FoodShip.urls'

@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
 
+from auditlog.registry import auditlog
+
 from account.models import *
 from product.models import *
 
@@ -31,3 +33,5 @@ class Order(models.Model):
 
     def __str__(self):
         return self.order_id
+
+auditlog.register(Order)  
