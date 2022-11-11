@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'product',
     'restaurant',
     'order',
-    'dynamicSearch',
+    'API', #this app is for api requests
 
 ]
 
