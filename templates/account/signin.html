@@ -17,24 +17,24 @@ FoodShip | SignIn
             {% csrf_token %}
             <div class="grid grid-cols-2 gap-4 input-box">
                 <div class="input-box flex-col items-start justify-start" style="width: 100%;">
-                    <input type="text" name="fname" value="{{fname}}" placeholder="First Name" class="w-full border rounded-lg">
+                    <input type="text" name="fname" value="{{fname}}" placeholder="First Name" class="w-full border form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
                     <p class="error f-light text-lg">{{fnameErr}}</p>
                 </div>
                 <div class="input-box flex-col items-start justify-start" style="width: 100%;">
-                    <input type="text" name="lname" value="{{lname}}" placeholder="Last Name" class="w-full border rounded-lg">
+                    <input type="text" name="lname" value="{{lname}}" placeholder="Last Name" class="w-full border form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
                     <p class="error f-light text-lg">{{lnameErr}}</p>
                 </div>
             </div>
             <div class="input-box my-4 flex-col items-start justify-start">
-                <input type="text" name="email" value="{{email}}" placeholder="Email" class="w-full border rounded-lg">
+                <input type="text" name="email" value="{{email}}" placeholder="Email" class="w-full border form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
                 <p class="error f-light text-lg">{{emailErr}}</p>
             </div>
             <div class="input-box my-4 flex-col items-start justify-start">
-                <input type="password" name="password" value="{{password}}" placeholder="Password" class="w-full border rounded-lg">
+                <input type="password" name="password" value="{{password}}" placeholder="Password" class="w-full border form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
                 <p class="error f-light text-lg">{{passwordErr}}</p>
             </div>
             <div class="input-box my-4 flex-col items-start justify-start">
-                <input type="password" name="cpassword" value="{{cpassword}}" placeholder="Confirm Password" class="w-full border rounded-lg">
+                <input type="password" name="cpassword" value="{{cpassword}}" placeholder="Confirm Password" class="w-full border form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
                 <p class="error f-light text-lg">{{cpasswordErr}}</p>
             </div>
             <div class="my-6 flex items-center justify-between" style="width: 435px;">

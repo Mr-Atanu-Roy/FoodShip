@@ -1,9 +1,6 @@
-from distutils.command.upload import upload
-from email.policy import default
-from statistics import mode
-from string import digits
-from unicodedata import decimal
 from django.db import models
+
+from django.utils import timezone
 import uuid
 
 from restaurant.models import *
@@ -34,7 +31,7 @@ class Product(models.Model):
     product_image = models.FileField(upload_to = 'product/', max_length=555)
     food_type = models.CharField(max_length=255, choices = food_type_choices, default='veg')
     meal_type = models.CharField(max_length=255, choices = meal_type_choices, default='starter')
-    added_on = models.DateField(auto_now = True)
+    added_on = models.DateTimeField(default=timezone.now)
 
     @property
     def get_restaurantID(self):
@@ -46,3 +43,16 @@ class Product(models.Model):
 
     def __str__(self):
         return self.product_name
+
+
+class ProductReview(models.Model):
+    # review_id = models.UUIDField(primary_key=True, unique=True, default = uuid.uuid4, editable=False)
+    product = models.CharField(max_length=255, blank=True, null=True)
+    user = models.CharField(max_length=255)
+    username = models.CharField(max_length=255, blank=True, null=True)
+    review = models.TextField()
+    rating = models.DecimalField(max_digits = 2, decimal_places=1)
+    added_on = models.DateField(default=timezone.now)
+
+    def __str__(self):
+        return f"{self.product}/{self.user}"

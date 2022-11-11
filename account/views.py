@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 
 from django.contrib.auth.models import User, auth
 from django.contrib.auth.decorators import login_required
@@ -48,7 +47,7 @@ def signIn(request):
 
                             print("registered successfull")
 
-                            return redirect('userProfileEdit')
+                            return redirect('/user/profile')
                     else:
                         context['passwordErr'] = context['cpasswordErr'] = "passwords do not match"
                         return redirect('signin', context)
@@ -207,7 +206,7 @@ def addAddress(request):
             if email == "":
                 email = request.user.email
 
-            createdAddress = UserAddress.objects.filter(email = request.user.email)
+            createdAddress = UserAddress.objects.filter(email = request.user.email, address_preference = "primary")
             if createdAddress is not None:
                 address_preference = "secondary"
             else:
@@ -227,7 +226,7 @@ def addAddress(request):
             newAddress.save()
 
             print("address saved")
-            return redirect('profile', context)
+            return redirect('/user/profile', context)
     except:
         pass
 

@@ -16,11 +16,11 @@ FoodShip | LogIn
             <form action="" method="post" class="mt-8">
                 {% csrf_token %}
                 <div class="input-box my-6">
-                    <input type="text" name="email" value="{{email}}" placeholder="Email" class="w-full border rounded-lg">
+                    <input type="text" name="email" value="{{email}}" placeholder="Email" class="w-full border form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
                     <p class="error">{{emailErr}}</p>
                 </div>
                 <div class="input-box my-6">
-                    <input type="password" name="password" value="{{password}}" placeholder="Password" class="w-full border rounded-lg">
+                    <input type="password" name="password" value="{{password}}" placeholder="Password" class="w-full border form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none">
                     <p class="error">{{passwordErr}}</p>
                 </div>
                 <div class="input-box my-8 text-center">

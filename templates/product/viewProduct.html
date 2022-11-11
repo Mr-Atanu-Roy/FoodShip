@@ -101,7 +101,43 @@ FoodShip | {{product.product_name | title}}
             </div>
             {% endif %}
         </div>
+
+        <div id="reviews">
+            <h3 class="f-bold text-2xl capitalize">
+                customer reviews
+            </h3>
+
+            <div class="w-full my-8">
+                <form action="{% url 'addProductReview' %}?product_id={{product_id}}" method="post">
+                    {% csrf_token %}
+                    <p class="f-light text-lg" style="color: red;">{{review_error}}</p>
+                    <textarea name="review" id="review" class="f-light form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Give your review" rows="5"></textarea>
+                    <div class="py-4">
+                        <button class="my-btn1 w-full" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+
+            {% if len_product_reviews != 0 %}
+            <div class="flex-col w-full my-10">
+                {% for review in product_reviews%}
+                <div class="w-full flex items-start justify-between">
+                    <div class="text-left w-5/6">
+                        <h3 class="text-2xl f-bold capitalize mb-2.5">{{review.username}}</h3>
+                        <p class="f-light text-lg">{{review.review}}</p>
+                    </div>
+                    <div class="f-light text-xl text-right">{{review.added_on}}</div>
+                </div>
+                <hr class="my-6">
+                {% endfor %}
+            </div>
+            {% else %}
+            <h3 class="f-light text-xl my-10">No reviews till now. Be the first person to rate this product</h3>
+            {% endif %}
+        </div>
+
     </div>
+
 </section>
 
 

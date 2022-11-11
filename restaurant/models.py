@@ -1,7 +1,6 @@
-from email.policy import default
-from hashlib import blake2s
 from django.db import models
 
+from django.utils import timezone
 import uuid
 
 restaurant_type_choices = (
@@ -47,3 +46,12 @@ class Restaurant(models.Model):
 
     def __str__(self):
         return self.restaurant_name
+
+
+class RestaurantReview(models.Model):
+    review_id = models.UUIDField(primary_key=True, unique=True, default = uuid.uuid4, editable=False)
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
+    user = models.CharField(max_length=255)
+    review = models.TextField()
+    rating = models.DecimalField(max_digits = 2, decimal_places=1)
+    added_on = models.DateField(default=timezone.now)
