@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ig4&)no7x*mb(t_r@dh9x9%&b4u_0o+k8%%7bxf5*j$nhe*8sm'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -139,42 +140,5 @@ MEDIA_ROOT = BASE_DIR/"media"
 MEDIA_URL = "/media/"
 
 #set session expiry when browser closes
-SESSION_EXPIRE_AT_BROWSER_CLOSE =True 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True 
 
-
-
-#instamojo credentials
-# for test
-API_KEY = "test_5b078119eb4fdf794bd218a0e58"
-AUTH_TOKEN = "test_86486ea3926cbd174c5bb653a13"
-
-# for production
-# API_KEY = "0b893a4bba8a8f43aee22c5314a22ca6"
-# AUTH_TOKEN = "4e27e982852a2aabf5a210cac5bcc824"
-
-#test credentials
-# Credit Card:
-
-# Mastercard -
-
-# Card Number: 5214 4789 0000 5330
-
-# Expiry: 01/2025
-
-# CVV: 123
-
-# OTP: 111111
-
-# VISA -
-
-# Card Number: 4065 6200 0000 1239
-
-# Expiry: 01/2025 CVV: 123 OTP: 111111
-
-# Debit Card:
-
-# Card Number: 4242 4242 4242 4242
-
-# Expiry: 01/25
-
-# CVV: 111

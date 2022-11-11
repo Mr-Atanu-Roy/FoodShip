@@ -1,9 +1,9 @@
-import random
-
-from django.conf import settings
+from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from django.shortcuts import redirect, render
+
+import random
+import os
 
 from instamojo_wrapper import Instamojo
 
@@ -12,7 +12,10 @@ from account.models import UserAddress
 from order.models import *
 from product.models import *
 
-api = Instamojo(api_key = settings.API_KEY, auth_token = settings.AUTH_TOKEN, endpoint='https://test.instamojo.com/api/1.1/')
+api = Instamojo(
+    api_key = os.environ.get('API_KEY'), 
+    auth_token = os.environ.get('AUTH_TOKEN'), 
+    endpoint = os.environ.get('ENDPOINT'))
 
 # Create your views here.
 
