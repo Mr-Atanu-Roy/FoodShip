@@ -204,6 +204,14 @@ def addAddress(request):
 
             if phone == "":
                 phone = userProfile.phone
+            if email == "":
+                email = request.user.email
+
+            createdAddress = UserAddress.objects.filter(email = request.user.email)
+            if createdAddress is not None:
+                address_preference = "secondary"
+            else:
+                address_preference = "primary"
 
             newAddress = UserAddress(email = request.user.email)
             newAddress.address_email = email
@@ -214,6 +222,8 @@ def addAddress(request):
             newAddress.pin = pin
             newAddress.street = street
             newAddress.address_type = address_type
+            newAddress.address_preference = address_preference
+
             newAddress.save()
 
             print("address saved")

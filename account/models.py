@@ -38,8 +38,8 @@ class UserAddress(models.Model):
     landmark = models.CharField(max_length = 255, blank = True, null = True)
     pin = models.CharField(max_length = 255, blank = True, null = True)
     phone = models.CharField(max_length = 255, blank = True, null = True)
-    address_preference = models.CharField(max_length = 255, choices = address_preference_choices, default = "secondary")
     address_type = models.CharField(max_length = 255, choices = address_type_choices)
+    address_preference = models.CharField(max_length = 255, choices = address_preference_choices, default = "secondary")
 
     
     def __str__(self):
